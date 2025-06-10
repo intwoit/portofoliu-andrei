@@ -11,7 +11,9 @@ const investments = [
   },
   {
     asset: "FET",
-    entries: []
+    entries: [
+      { amount: 200 / 0.792748, price: 0.792748 },
+    ]
   },
 ];
 
