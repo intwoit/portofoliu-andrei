@@ -8,7 +8,7 @@ const investments = [
   {
     asset: "LINK",
     entries: [
-      { amount: 200 / 11.64, price: 11.64 },
+      { amount: 850 / 19.77, price: 19.77 },
      ]
   },
   {
