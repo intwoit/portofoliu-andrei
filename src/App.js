@@ -11,13 +11,14 @@ function App() {
   const [passwordInput, setPasswordInput] = useState('');
 
   useEffect(() => {
-    fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum,chainlink,fetch-ai&vs_currencies=usd')
+    fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum,chainlink,fetch-ai,cardano&vs_currencies=usd')
       .then(res => res.json())
       .then(data => {
         const formatted = {
           ETH: data.ethereum?.usd ?? 0,
           LINK: data.chainlink?.usd ?? 0,
           FET: data["fetch-ai"]?.usd ?? 0,
+	  ADA: data.cardano?.usd ?? 0,
         };
         setPrices(formatted);
         setLoading(false);
@@ -126,7 +127,7 @@ function App() {
           <p><strong>Andrei's Share (70% profit + total):</strong> ${format(andreisShare)}</p>
           <p><strong>Alex's Share (30% profit):</strong> ${format(alexsShare)}</p>
           <p><strong>Target date for closing:</strong> December 31, 2025</p>
-          <p><strong>Cash reserved for dips:</strong> $971</p>
+          <p><strong>Cash reserved for dips:</strong> $671</p>
         </div>
       )}
     </div>

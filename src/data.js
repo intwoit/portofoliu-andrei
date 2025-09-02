@@ -1,5 +1,11 @@
 const investments = [
 {
+    asset: "ADA",
+    entries: [
+      { amount: 300 / 0.82, price: 0.82 },
+     ]
+  },
+{
     asset: "LINK",
     entries: [
       { amount: 1350 / 21.48, price: 21.48 },
