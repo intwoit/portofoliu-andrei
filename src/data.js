@@ -2,13 +2,13 @@ const investments = [
 {
     asset: "ADA",
     entries: [
-      { amount: 800 / 0.836, price: 0.836 },
+      { amount: 900 / 0.845, price: 0.845 },
      ]
   },
 {
     asset: "LINK",
     entries: [
-      { amount: 850 / 20.69, price: 20.69 },
+      { amount: 1150 / 21.66, price: 21.66 },
      ]
   },
   {
