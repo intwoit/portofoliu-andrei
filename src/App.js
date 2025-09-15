@@ -127,7 +127,7 @@ function App() {
           <p><strong>Andrei's Share (70% profit + total):</strong> ${format(andreisShare)}</p>
           <p><strong>Alex's Share (30% profit):</strong> ${format(alexsShare)}</p>
           <p><strong>Target date for closing:</strong> December 31, 2025</p>
-          <p><strong>Cash reserved for dips:</strong> $171</p>
+          <p><strong>Cash reserved for dips:</strong> $0</p>
         </div>
       )}
     </div>
