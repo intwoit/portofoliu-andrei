@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 import investments from './data';
 import './index.css';
 
-const STARTING_BASELINE = 2000;     // $2,000 fix
-const INVESTOR_RATE     = 0.70;     // Dragoș 70%
+const STARTING_BASELINE = 1700;     // $1,700 fix
+const INVESTOR_RATE     = 0.70;     // Andrei 70%
 const MANAGER_RATE      = 0.30;     // Alex 30%
 const TARGET_DATE       = "December 31, 2025";
-const CASH_RESERVED     = 1200;
+const CASH_RESERVED     = 0;
 
 function App() {
   const [prices, setPrices] = useState({});
@@ -51,7 +51,7 @@ useEffect(() => {
         />
         <button
           onClick={() => {
-            if (passwordInput === 'dragos2025') {
+            if (passwordInput === 'andrei2025') {
               setAuthenticated(true);
             } else {
               alert('Wrong password');
@@ -103,7 +103,7 @@ const alexShare   = MANAGER_RATE  * profitAboveBase;
   return (
     <div className="min-h-screen bg-gradient-to-tr from-black via-gray-900 to-gray-800 text-white p-6 font-mono">
       <h1 className="text-3xl text-cyan-400 font-bold mb-8 border-b border-cyan-700 pb-2">
-        Dragos Crypto Tracker
+        Andrei Crypto Tracker
       </h1>
 
       <div className="overflow-x-auto">
