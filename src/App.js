@@ -141,7 +141,7 @@ const alexShare   = MANAGER_RATE  * profitAboveBase;
 <div className="mt-8 space-y-2 text-cyan-200 text-xs">
   <p><strong>Starting Investment (baseline):</strong> ${format(base)}</p>
    <p><strong>Profit above baseline:</strong> ${format(profitAboveBase)}</p>
-  <p><strong>Dragoș’s Share (70% over baseline):</strong> ${format(dragosShare)}</p>
+  <p><strong>Andrei’s Share (70% over baseline):</strong> ${format(dragosShare)}</p>
   <p><strong>Alex’s Share (30% over baseline):</strong> ${format(alexShare)}</p>
   <p><strong>Target date for closing:</strong> {TARGET_DATE}</p>
   <p><strong>Cash reserved for dips:</strong> ${format(CASH_RESERVED)}</p>
