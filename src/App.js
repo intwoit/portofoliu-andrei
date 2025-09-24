@@ -94,7 +94,7 @@ const base = STARTING_BASELINE;
 const profitAboveBase = Math.max(0, totalValue - base);
 
 // împărțirea 70/30 DOAR din profitul peste baseline
-const dragosShare = INVESTOR_RATE * profitAboveBase;
+const andreiShare = INVESTOR_RATE * profitAboveBase;
 const alexShare   = MANAGER_RATE  * profitAboveBase;
 
 
