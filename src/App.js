@@ -2,6 +2,12 @@ import React, { useEffect, useState } from 'react';
 import investments from './data';
 import './index.css';
 
+const STARTING_BASELINE = 2000;     // $2,000 fix
+const INVESTOR_RATE     = 0.70;     // Dragoș 70%
+const MANAGER_RATE      = 0.30;     // Alex 30%
+const TARGET_DATE       = "December 31, 2025";
+const CASH_RESERVED     = 1200;
+
 function App() {
   const [prices, setPrices] = useState({});
   const [loading, setLoading] = useState(true);
@@ -10,22 +16,24 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [passwordInput, setPasswordInput] = useState('');
 
-  useEffect(() => {
-    fetch('https://api.coingecko.com/api/v3/simple/price?ids=ethereum,chainlink,fetch-ai,cardano&vs_currencies=usd')
-      .then(res => res.json())
-      .then(data => {
-        const formatted = {
-          ETH: data.ethereum?.usd ?? 0,
-          LINK: data.chainlink?.usd ?? 0,
-          FET: data["fetch-ai"]?.usd ?? 0,
-	  ADA: data.cardano?.usd ?? 0,
-        };
-        setPrices(formatted);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error('Failed to fetch prices:', err);
-        setLoading(false);
+useEffect(() => {
+  fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,chainlink,fetch-ai,cardano,solana&vs_currencies=usd')
+    .then(res => res.json())
+    .then(data => {
+      const formatted = {
+        BTC: data.bitcoin?.usd ?? 0,
+        ETH: data.ethereum?.usd ?? 0,
+        LINK: data.chainlink?.usd ?? 0,
+        FET: data["fetch-ai"]?.usd ?? 0,
+        ADA: data.cardano?.usd ?? 0,
+        SOL: data.solana?.usd ?? 0,   // 👈 nou
+      };
+      setPrices(formatted);
+      setLoading(false);
+    })
+    .catch(err => {
+      console.error('Failed to fetch prices:', err);
+      setLoading(false);
       });
   }, []);
 
@@ -43,7 +51,7 @@ function App() {
         />
         <button
           onClick={() => {
-            if (passwordInput === 'andrei2025') {
+            if (passwordInput === 'dragos2025') {
               setAuthenticated(true);
             } else {
               alert('Wrong password');
@@ -76,18 +84,26 @@ function App() {
     };
   });
 
-  const totalValue = processedData.reduce((sum, item) => sum + item.value, 0);
-  const totalInvestment = processedData.reduce((sum, item) => sum + item.investment, 0);
-  const totalProfit = totalValue - totalInvestment;
-  const andreisShare = totalInvestment + 0.7 * totalProfit;
-  const alexsShare = totalProfit > 0 ? 0.3 * totalProfit : 0;
+const totalValue = processedData.reduce((sum, item) => sum + item.value, 0);
+const totalInvestment = processedData.reduce((sum, item) => sum + item.investment, 0);
+
+// baseline fix de la care începi împărțirea
+const base = STARTING_BASELINE;
+
+// profitul eligibil pentru split = DOAR ce depășește baseline-ul
+const profitAboveBase = Math.max(0, totalValue - base);
+
+// împărțirea 70/30 DOAR din profitul peste baseline
+const dragosShare = INVESTOR_RATE * profitAboveBase;
+const alexShare   = MANAGER_RATE  * profitAboveBase;
+
 
   const format = (val, decimals = 2) => Number(val).toFixed(decimals);
 
   return (
     <div className="min-h-screen bg-gradient-to-tr from-black via-gray-900 to-gray-800 text-white p-6 font-mono">
       <h1 className="text-3xl text-cyan-400 font-bold mb-8 border-b border-cyan-700 pb-2">
-        Andrei Crypto Tracker
+        Dragos Crypto Tracker
       </h1>
 
       <div className="overflow-x-auto">
@@ -122,13 +138,15 @@ function App() {
       </div>
 
       {!loading && (
-        <div className="mt-8 space-y-2 text-cyan-200">
-          <p><strong>Total Portfolio Value:</strong> ${format(totalValue)}</p>
-          <p><strong>Andrei's Share (70% profit + total):</strong> ${format(andreisShare)}</p>
-          <p><strong>Alex's Share (30% profit):</strong> ${format(alexsShare)}</p>
-          <p><strong>Target date for closing:</strong> December 31, 2025</p>
-          <p><strong>Cash reserved for dips:</strong> $0</p>
-        </div>
+<div className="mt-8 space-y-2 text-cyan-200 text-xs">
+  <p><strong>Starting Investment (baseline):</strong> ${format(base)}</p>
+   <p><strong>Profit above baseline:</strong> ${format(profitAboveBase)}</p>
+  <p><strong>Dragoș’s Share (70% over baseline):</strong> ${format(dragosShare)}</p>
+  <p><strong>Alex’s Share (30% over baseline):</strong> ${format(alexShare)}</p>
+  <p><strong>Target date for closing:</strong> {TARGET_DATE}</p>
+  <p><strong>Cash reserved for dips:</strong> ${format(CASH_RESERVED)}</p>
+</div>
+
       )}
     </div>
   );
