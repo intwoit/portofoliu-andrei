@@ -2,25 +2,25 @@ const investments = [
 {
     asset: "BTC",
     entries: [
-      { amount: 1110 / 111697.53, price: 111697.53 },
+      { amount: 1018 / 111697.50, price: 111697.50 },
      ]
   },
 {
     asset: "ETH",
     entries: [
-      { amount: 777 / 4041.92, price: 4041.92 },
+      { amount: 810 / 4221.60, price: 4221.60 },
      ]
   },
 {
  asset: "LINK",
     entries: [
-      { amount: 100 / 21.61, price: 21.61 },
+      { amount: 300 / 22.39, price: 22.39 },
      ]
   },
 {
  asset: "SOL",
     entries: [
-      { amount: 100 / 211.79, price: 211.79 },
+      { amount: 200 / 222.50, price: 222.50 },
      ]
   },
 
