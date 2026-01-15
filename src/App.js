@@ -5,7 +5,6 @@ import './index.css';
 const STARTING_BASELINE = 1700;     // $1,700 fix
 const INVESTOR_RATE     = 0.70;     // Andrei 70%
 const MANAGER_RATE      = 0.30;     // Alex 30%
-const TARGET_DATE       = "December 31, 2025";
 const CASH_RESERVED     = 0;
 
 function App() {
@@ -143,8 +142,7 @@ const alexShare   = MANAGER_RATE  * profitAboveBase;
    <p><strong>Profit above baseline:</strong> ${format(profitAboveBase)}</p>
   <p><strong>Andrei’s Share (70% over baseline):</strong> ${format(andreiShare)}</p>
   <p><strong>Alex’s Share (30% over baseline):</strong> ${format(alexShare)}</p>
-  <p><strong>Target date for closing:</strong> {TARGET_DATE}</p>
-  <p><strong>Cash reserved for dips:</strong> ${format(CASH_RESERVED)}</p>
+  <p><strong>Cash:</strong> ${format(CASH_RESERVED)}</p>
 </div>
 
       )}
