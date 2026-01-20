@@ -65,23 +65,25 @@ useEffect(() => {
   }
 
   const processedData = investments.map(inv => {
-    const coinInvestment = inv.entries.reduce((sum, e) => sum + e.amount * e.price, 0);
-    const totalAmount = inv.entries.reduce((sum, e) => sum + e.amount, 0);
-    const avgPrice = totalAmount > 0 ? coinInvestment / totalAmount : 0;
-    const livePrice = prices[inv.asset] ?? 0;
-    const value = totalAmount * livePrice;
-    const pnl = avgPrice > 0 ? ((livePrice - avgPrice) / avgPrice) * 100 : 0;
+  const coinInvestment = inv.entries.reduce((sum, e) => sum + e.amount * e.price, 0);
+  const totalAmount = inv.entries.reduce((sum, e) => sum + e.amount, 0);
 
-    return {
-      asset: inv.asset,
-      investment: coinInvestment,
-      averagePrice: avgPrice,
-      amount: totalAmount,
-      livePrice,
-      value,
-      pnl,
-    };
-  });
+  const avgPrice = totalAmount > 0 ? coinInvestment / totalAmount : 0; // <-- obligatoriu
+
+  const livePrice = prices[inv.asset] ?? 0;
+  const value = totalAmount * livePrice;
+  const pnl = avgPrice > 0 ? ((livePrice - avgPrice) / avgPrice) * 100 : 0;
+
+  return {
+    asset: inv.asset,
+    investment: coinInvestment, // <-- deja ok
+    averagePrice: avgPrice,
+    amount: totalAmount,
+    livePrice,
+    value,
+    pnl,
+  };
+});
 
 const totalValue = processedData.reduce((sum, item) => sum + item.value, 0);
 const coinInvestment = processedData.reduce((sum, item) => sum + item.investment, 0);
