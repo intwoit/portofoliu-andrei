@@ -85,7 +85,8 @@ useEffect(() => {
   };
 });
 
-const totalValue = processedData.reduce((sum, item) => sum + item.value, 0);
+const cryptoValue = processedData.reduce((sum, item) => sum + item.value, 0);
+const totalValue = cryptoValue + CASH_RESERVED;
 
 // baseline fix de la care începi împărțirea
 const base = STARTING_BASELINE;
@@ -140,10 +141,10 @@ const alexShare   = MANAGER_RATE  * profitAboveBase;
       {!loading && (
 <div className="mt-8 space-y-2 text-cyan-200 text-xs">
   <p><strong>Starting Investment (baseline):</strong> ${format(base)}</p>
-   <p><strong>Profit above baseline:</strong> ${format(profitAboveBase)}</p>
+  <p><strong>Profit above baseline:</strong> ${format(profitAboveBase)}</p>
+  <p><strong>Cash:</strong> ${format(CASH_RESERVED)}</p>
   <p><strong>Andrei’s Share (70% over baseline):</strong> ${format(andreiShare)}</p>
   <p><strong>Alex’s Share (30% over baseline):</strong> ${format(alexShare)}</p>
-  <p><strong>Cash:</strong> ${format(CASH_RESERVED)}</p>
 </div>
 
       )}
