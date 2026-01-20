@@ -86,7 +86,6 @@ useEffect(() => {
 });
 
 const totalValue = processedData.reduce((sum, item) => sum + item.value, 0);
-const coinInvestment = processedData.reduce((sum, item) => sum + item.investment, 0);
 
 // baseline fix de la care începi împărțirea
 const base = STARTING_BASELINE;
