@@ -25,7 +25,7 @@ export const clientConfig = {
   startingInvestment: 1700,   // baseline fix
   split: { investor: 0.70, manager: 0.30 },
   targetDate: "2025-12-31",
-  cashReserved: 450,
+  cashReserved: 300,
 };
 
 export default investments;
