@@ -65,7 +65,7 @@ useEffect(() => {
   }
 
   const processedData = investments.map(inv => {
-    const totalInvestment = inv.entries.reduce((sum, e) => sum + e.amount * e.price, 0);
+    const coinInvestment = inv.entries.reduce((sum, e) => sum + e.amount * e.price, 0);
     const totalAmount = inv.entries.reduce((sum, e) => sum + e.amount, 0);
     const avgPrice = totalAmount > 0 ? totalInvestment / totalAmount : 0;
     const livePrice = prices[inv.asset] ?? 0;
@@ -74,7 +74,7 @@ useEffect(() => {
 
     return {
       asset: inv.asset,
-      investment: totalInvestment,
+      investment: coinInvestment,
       averagePrice: avgPrice,
       amount: totalAmount,
       livePrice,
@@ -84,7 +84,7 @@ useEffect(() => {
   });
 
 const totalValue = processedData.reduce((sum, item) => sum + item.value, 0);
-const totalInvestment = processedData.reduce((sum, item) => sum + item.investment, 0);
+const portfolioInvestment = processedData.reduce((sum, item) => sum + item.investment, 0);
 
 // baseline fix de la care începi împărțirea
 const base = STARTING_BASELINE;
