@@ -67,7 +67,7 @@ useEffect(() => {
   const processedData = investments.map(inv => {
     const coinInvestment = inv.entries.reduce((sum, e) => sum + e.amount * e.price, 0);
     const totalAmount = inv.entries.reduce((sum, e) => sum + e.amount, 0);
-    const avgPrice = totalAmount > 0 ? totalInvestment / totalAmount : 0;
+    const avgPrice = totalAmount > 0 ? coinInvestment / totalAmount : 0;
     const livePrice = prices[inv.asset] ?? 0;
     const value = totalAmount * livePrice;
     const pnl = avgPrice > 0 ? ((livePrice - avgPrice) / avgPrice) * 100 : 0;
