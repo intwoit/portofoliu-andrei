@@ -1,22 +1,22 @@
 const investments = [
 {
-    asset: "BTC",
-    entries: [
-      { amount: 560 / 69785.57, price: 69785.57 },
-     ]
-  },
+  asset: "BTC",
+  entries: [
+    { amount: 590 / 70409.19820017, price: 70409.19 },
+  ],
+},
 {
-    asset: "ETH",
-    entries: [
-      { amount: 300 / 2043.18, price: 2043.18 },
-     ]
-  },
+  asset: "ETH",
+  entries: [
+    { amount: 370 / 2138.97219003, price: 2138.97 },
+  ],
+},
 {
- asset: "SOL",
-    entries: [
-      { amount: 210 / 86.71, price: 86.71 },
-     ]
-  },
+  asset: "SOL",
+  entries: [
+    { amount: 410 / 98.40133946, price: 98.40 },
+  ],
+},
 
 
 ];
